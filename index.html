@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Collection - Festival of Stones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .logo-preview {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .animation-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .animation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .animation-card:hover::before {
+            left: 100%;
+        }
+
+        .animation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .card-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .view-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .view-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .animation-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-preview">🎨</div>
+            <h1>Animation Collection</h1>
+            <p>Festival of Stones - Multiple Themed Versions</p>
+            <p>Explore different color spectrums and animation styles</p>
+        </div>
+
+        <div class="grid">
+            <div class="animation-card" onclick="window.open('animations/lava.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #ff6b35, #f7931e);">🔥</div>
+                    <div>
+                        <div class="card-title">Lava Theme</div>
+                        <div class="card-subtitle">Classic Orange & Red</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    The original lava animation with flowing orange and red gradients, creating a dynamic volcanic atmosphere.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Lava Colors</span>
+                    <span class="feature-tag">Medium Speed</span>
+                    <span class="feature-tag">Classic</span>
+                </div>
+                <a href="animations/lava.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/blue-theme-with-orange.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #0066cc, #ff8c00);">💎</div>
+                    <div>
+                        <div class="card-title">Blue Stone Theme</div>
+                        <div class="card-subtitle">Blue & Orange Mix</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    A sophisticated blue stone aesthetic with orange highlights, perfect for a modern, elegant look.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Blue Tones</span>
+                    <span class="feature-tag">Orange Accents</span>
+                    <span class="feature-tag">Stone Effect</span>
+                </div>
+                <a href="animations/blue-theme-with-orange.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/dark-clustered-lava.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #8B4513, #CD853F);">🌋</div>
+                    <div>
+                        <div class="card-title">Dark Clustered Lava</div>
+                        <div class="card-subtitle">Dark Brown & Copper</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    Intense dark lava theme with clustered colors, faster animations, and deeper, richer tones.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Dark Tones</span>
+                    <span class="feature-tag">Fast Animation</span>
+                    <span class="feature-tag">Clustered</span>
+                </div>
+                <a href="animations/dark-clustered-lava.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/dark-clustered-blue.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #191970, #006994);">🌊</div>
+                    <div>
+                        <div class="card-title">Dark Clustered Blue</div>
+                        <div class="card-subtitle">Deep Blue & Navy</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    Deep blue clustered theme with intense color clustering, fast animations, and dark ocean vibes.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Deep Blue</span>
+                    <span class="feature-tag">Fast Animation</span>
+                    <span class="feature-tag">Ocean Feel</span>
+                </div>
+                <a href="animations/dark-clustered-blue.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/dark-clustered-mixed.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #4B0082, #8B008B);">✨</div>
+                    <div>
+                        <div class="card-title">Dark Clustered Mixed</div>
+                        <div class="card-subtitle">Purple & Magenta</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    Mysterious mixed theme with purple, magenta, and dark green tones, featuring the fastest animations.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Mixed Colors</span>
+                    <span class="feature-tag">Fastest Speed</span>
+                    <span class="feature-tag">Mysterious</span>
+                </div>
+                <a href="animations/dark-clustered-mixed.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/dark-starter.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #008000, #FFA500);">🌿</div>
+                    <div>
+                        <div class="card-title">Dark Starter</div>
+                        <div class="card-subtitle">Green, Orange, Blue Mix</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    A comprehensive color mix featuring green, orange, blue, turquoise, black, and brown with slow, deliberate animations.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Mixed Spectrum</span>
+                    <span class="feature-tag">Slow Animation</span>
+                    <span class="feature-tag">Comprehensive</span>
+                </div>
+                <a href="animations/dark-starter.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/neon-cyberpunk.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #FF00FF, #00FFFF);">⚡</div>
+                    <div>
+                        <div class="card-title">Neon Cyberpunk</div>
+                        <div class="card-subtitle">Bright Neon Colors</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    High-energy neon cyberpunk theme with bright magenta, cyan, yellow, and green colors and fast animations.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Neon Colors</span>
+                    <span class="feature-tag">Fast Speed</span>
+                    <span class="feature-tag">Cyberpunk</span>
+                </div>
+                <a href="animations/neon-cyberpunk.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/sunset-warm.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #FF4500, #FFD700);">🌅</div>
+                    <div>
+                        <div class="card-title">Sunset Warm</div>
+                        <div class="card-subtitle">Warm Sunset Colors</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    Warm and inviting sunset theme with reds, oranges, yellows, and pinks creating a cozy atmosphere.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Warm Colors</span>
+                    <span class="feature-tag">Medium Speed</span>
+                    <span class="feature-tag">Sunset Feel</span>
+                </div>
+                <a href="animations/sunset-warm.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+
+            <div class="animation-card" onclick="window.open('animations/ocean-depths.html', '_blank')">
+                <div class="card-header">
+                    <div class="card-icon" style="background: linear-gradient(45deg, #0047AB, #008080);">🌊</div>
+                    <div>
+                        <div class="card-title">Ocean Depths</div>
+                        <div class="card-subtitle">Deep Marine Colors</div>
+                    </div>
+                </div>
+                <div class="card-description">
+                    Deep ocean theme with navy, teal, and deep blue tones creating a mysterious underwater atmosphere.
+                </div>
+                <div class="card-features">
+                    <span class="feature-tag">Marine Colors</span>
+                    <span class="feature-tag">Medium Speed</span>
+                    <span class="feature-tag">Ocean Feel</span>
+                </div>
+                <a href="animations/ocean-depths.html" class="view-button" target="_blank">View Animation</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🎨 Animation Collection - Festival of Stones</p>
+            <p>Multiple themed versions with different color spectrums and animation speeds</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and enhance interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to cards
+            const cards = document.querySelectorAll('.animation-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-10px)';
+                    }, 150);
+                });
+            });
+
+            // Add hover sound effect (optional)
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

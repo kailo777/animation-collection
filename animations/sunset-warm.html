@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunset Warm Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sunset-warm-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 69, 0, 0.9) 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.85) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.9) 0%, transparent 45%),
+                radial-gradient(circle at 70% 30%, rgba(255, 140, 0, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(255, 105, 180, 0.85) 0%, transparent 55%),
+                linear-gradient(45deg, 
+                    rgba(255, 69, 0, 0.95), 
+                    rgba(255, 20, 147, 0.9), 
+                    rgba(255, 215, 0, 0.85), 
+                    rgba(255, 140, 0, 0.9), 
+                    rgba(255, 105, 180, 0.85), 
+                    rgba(255, 69, 0, 0.95)
+                );
+            background-size: 180% 180%, 200% 200%, 160% 160%, 220% 220%, 170% 170%, 140% 140%;
+            animation: sunsetWarmFlow 6s ease-in-out infinite;
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        @keyframes sunsetWarmFlow {
+            0% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 100% 0%, 0% 50%;
+            }
+            20% {
+                background-position: 100% 0%, 0% 100%, 100% 50%, 100% 0%, 0% 100%, 50% 0%;
+            }
+            40% {
+                background-position: 100% 100%, 0% 0%, 0% 100%, 0% 100%, 100% 100%, 100% 50%;
+            }
+            60% {
+                background-position: 0% 100%, 100% 0%, 50% 0%, 100% 100%, 0% 0%, 50% 100%;
+            }
+            80% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%, 100% 0%, 100% 0%;
+            }
+            100% {
+                background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%, 100% 0%, 0% 50%;
+            }
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .logo-svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.7));
+            transform: scale(0.8);
+            transform-origin: center;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 95%;
+                max-width: 400px;
+            }
+            
+            .logo-svg {
+                transform: scale(0.6);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container {
+                width: 98%;
+                max-width: 300px;
+            }
+            
+            .logo-svg {
+                transform: scale(0.5);
+            }
+        }
+
+        /* Sunset warm particles */
+        .sunset-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #FF4500, #FF1493, #FFD700, #FF8C00, #FF69B4);
+            border-radius: 50%;
+            animation: sunsetFloat 5s ease-in-out infinite;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        @keyframes sunsetFloat {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-16px) translateX(12px) scale(1.4);
+                opacity: 1;
+            }
+        }
+
+        /* SVG text color animations - sunset warm theme */
+        .logo-svg text,
+        .logo-svg tspan {
+            animation: sunsetTextShift 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.7));
+        }
+
+        @keyframes sunsetTextShift {
+            0%, 100% {
+                fill: rgba(255, 255, 255, 0.95);
+                opacity: 0.95;
+            }
+            25% {
+                fill: rgba(255, 255, 255, 0.8);
+                opacity: 0.8;
+            }
+            50% {
+                fill: rgba(255, 255, 255, 0.9);
+                opacity: 0.9;
+            }
+            75% {
+                fill: rgba(255, 255, 255, 0.75);
+                opacity: 0.75;
+            }
+        }
+
+        /* SVG path color animations - sunset warm theme */
+        .logo-svg path,
+        .logo-svg #svg_6 path,
+        .logo-svg #svg_9,
+        .logo-svg #svg_11 {
+            animation: sunsetPathShift 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.7));
+        }
+
+        @keyframes sunsetPathShift {
+            0%, 100% {
+                fill: rgba(255, 255, 255, 0.95);
+                opacity: 0.95;
+            }
+            33% {
+                fill: rgba(255, 255, 255, 0.8);
+                opacity: 0.8;
+            }
+            66% {
+                fill: rgba(255, 255, 255, 0.9);
+                opacity: 0.9;
+            }
+        }
+
+        /* Sunset warm glow effect */
+        .sunset-glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(255, 69, 0, 0.3) 0%, rgba(255, 20, 147, 0.25) 25%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 140, 0, 0.15) 75%, rgba(255, 105, 180, 0.1) 90%, transparent 100%);
+            animation: sunsetGlowPulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes sunsetGlowPulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+        }
+
+        /* Sunset warm overlay */
+        .sunset-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255, 69, 0, 0.25) 0%, transparent 35%),
+                radial-gradient(circle at 75% 75%, rgba(255, 20, 147, 0.22) 0%, transparent 40%),
+                radial-gradient(circle at 45% 75%, rgba(255, 215, 0, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 65% 25%, rgba(255, 140, 0, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 35% 65%, rgba(255, 105, 180, 0.15) 0%, transparent 55%);
+            animation: sunsetOverlayShift 5s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes sunsetOverlayShift {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.35;
+                transform: scale(1.15);
+            }
+        }
+
+        /* Sunset warm floating elements */
+        .sunset-floating-element {
+            position: absolute;
+            width: 2.5px;
+            height: 2.5px;
+            background: radial-gradient(circle, #FF4500, #FF1493, #FFD700);
+            border-radius: 50%;
+            animation: sunsetFloatAround 8s linear infinite;
+            opacity: 0.75;
+            z-index: 1;
+        }
+
+        @keyframes sunsetFloatAround {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.75;
+            }
+            25% {
+                transform: translate(80px, -40px) rotate(90deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(40px, -80px) rotate(180deg);
+                opacity: 0.9;
+            }
+            75% {
+                transform: translate(-40px, -40px) rotate(270deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+                opacity: 0.75;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sunset warm background -->
+        <div class="sunset-warm-background"></div>
+        
+        <!-- Sunset warm overlay -->
+        <div class="sunset-overlay"></div>
+        
+        <!-- Sunset warm glow effect -->
+        <div class="sunset-glow-effect"></div>
+        
+        <!-- Logo container -->
+        <div class="logo-container">
+            <svg class="logo-svg" width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1">
+                <desc>Created with Fabric.js 5.2.4</desc>
+                <g>
+                    <title>Layer 1</title>
+                    <rect id="svg_1" fill="transparent" height="100%" width="100%" y="0" x="0"/>
+                    <g id="f712cf3b-f77c-43c0-952f-c249b36cd7ad" transform="matrix(1 0 0 1 540 540)">
+                        <rect id="svg_2" fill-rule="nonzero" fill="transparent" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-linecap="butt" stroke-dasharray="none" stroke="none" height="1080" width="1080" y="-540" x="-541.69492" vector-effect="non-scaling-stroke"/>
+                    </g>
+                    <g id="3401a221-ed50-4fd9-9725-9266e503285a" transform="matrix(0 0 0 0 0 0)"/>
+                    <g id="a2beaa14-644c-4b37-a009-49b53c7eb045" transform="matrix(0.95 0 0 0.95 512.99 505.43)">
+                        <text id="svg_3" fill-rule="nonzero" fill="#ffffff" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-linecap="butt" stroke-dasharray="none" stroke="none" font-weight="700" font-style="normal" font-size="191" font-family="Alegreya" xml:space="preserve">
+                            <tspan fill="#ffffff" id="svg_4" y="-47.91" x="-490.87">FESIVAL OF</tspan>
+                            <tspan fill="#ffffff" id="svg_5" y="167.92" x="-347.33">STONES</tspan>
+                        </text>
+                    </g>
+                    <g id="svg_6" transform="matrix(2.36 0 0 2.36 747.54 871.86)">
+                        <g id="svg_7">
+                            <g id="svg_8" transform="matrix(1 0 0 1 -106.58 -29.61)">
+                                <path id="svg_9" fill-rule="nonzero" fill="#ffffff" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-dasharray="none" stroke="none" stroke-linecap="butt" d="m29.597,-13.39l0,11.882c0.0017,0.6744 -0.1298,1.3425 -0.3871,1.966c-0.2573,0.6234 -0.6353,1.1898 -1.1122,1.6667c-0.4769,0.4769 -1.0433,0.8548 -1.6667,1.1121c-0.6234,0.2573 -1.2915,0.3889 -1.966,0.3872l-48.98,0c-0.6744,0.0017 -1.3425,-0.1299 -1.9659,-0.3872c-0.6234,-0.2573 -1.1899,-0.6352 -1.6668,-1.1121c-0.4769,-0.4769 -0.8548,-1.0433 -1.1121,-1.6667c-0.25731,-0.6235 -0.38888,-1.2916 -0.38717,-1.966l0,-11.882l-9.707,0l0,11.882c0.00872,3.9477 1.58081,7.7313 4.37227,10.5227c2.79147,2.7915 6.575,4.3636 10.5227,4.3723l48.924,0c3.9476,-0.009 7.7309,-1.5812 10.5221,-4.3726c2.7913,-2.7915 4.3632,-6.5749 4.3719,-10.5224l0,-11.882l-9.762,0z" vector-effect="non-scaling-stroke"/>
+                            </g>
+                            <g id="svg_10" transform="matrix(1 0 0 1 -106.64 13.46)">
+                                <path id="svg_11" fill-rule="nonzero" fill="#ffffff" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-dasharray="none" stroke="none" stroke-linecap="butt" d="m21.892,-20.813l-43.791,0c-2.2934,-0.0013 -4.5645,0.4494 -6.6836,1.3265c-2.11905,0.877 -4.04446,2.1631 -5.66612,3.7848c-1.62167,1.6216 -2.90778,3.5471 -3.78481,5.6661c-0.87704,2.1191 -1.32778,4.3902 -1.32647,6.6836l0,6.694c-0.00131,2.2934 0.44943,4.5645 1.32647,6.6836c0.87703,2.1191 2.16314,4.0445 3.78481,5.6661c1.62166,1.6217 3.54707,2.9078 5.66612,3.7848c2.1191,0.8771 4.3902,1.3278 6.6836,1.3265l43.791,0c2.2934,0.0013 4.5645,-0.4494 6.6836,-1.3265c2.1191,-0.877 4.0445,-2.1631 5.6661,-3.7848c1.6217,-1.6216 2.9078,-3.547 3.7848,-5.6661c0.8771,-2.1191 1.3278,-4.3902 1.3265,-6.6836l0,-6.694c0.0013,-2.2934 -0.4494,-4.5645 -1.3265,-6.6836c-0.877,-2.119 -2.1631,-4.0445 -3.7848,-5.6661c-1.6216,-1.6217 -3.547,-2.9078 -5.6661,-3.7848c-2.1191,-0.8771 -4.3902,-1.3278 -6.6836,-1.3265zm7.754,17.461l0,6.694c-0.0037,2.041 -0.8161,3.9974 -2.2594,5.4406c-1.4432,1.4433 -3.3996,2.2557 -5.4406,2.2594l-43.789,0c-2.041,-0.0037 -3.9974,-0.8161 -5.4406,-2.2594c-1.4433,-1.4432 -2.2557,-3.3996 -2.2594,-5.4406l0,-6.694c0.0037,-2.041 0.8161,-3.9974 2.2594,-5.4406c1.4432,-1.4433 3.3996,-2.2557 5.4406,-2.2594l43.791,0c1.0133,-0.0076 2.018,0.1864 2.9556,0.5707c0.9376,0.3843 1.7895,0.9511 2.506,1.6677c0.7166,0.7165 1.2834,1.5684 1.6677,2.506c0.3843,0.9376 0.5783,1.9423 0.5707,2.9556" vector-effect="non-scaling-stroke"/>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="e59227db-ada6-4777-9fc1-9f039bd141e4" transform="matrix(0.98 0 0 1.06 840.93 808.49)">
+                        <text id="svg_12" fill-rule="nonzero" fill="rgb(0,0,0)" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-linecap="butt" stroke-dasharray="none" stroke="none" font-weight="400" font-style="normal" font-size="40" font-family="Lato" xml:space="preserve"/>
+                    </g>
+                    <g id="380ab682-71d6-448c-b6ed-c23b96065fba" transform="matrix(0.92 0 0 0.92 518.92 207.51)">
+                        <text id="svg_13" fill-rule="nonzero" fill="#ffffff" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-linecap="butt" stroke-dasharray="none" stroke="none" font-weight="700" font-style="normal" font-size="80" font-family="Alegreya" xml:space="preserve">
+                            <tspan id="svg_14" fill="#ffffff" font-weight="900" font-style="normal" font-size="59px" font-family="'Raleway'" y="18.53" x="-373.23">HAUSMESSE ITALIEN 2025</tspan>
+                        </text>
+                    </g>
+                    <g id="svg_15" transform="matrix(1.1 0 0 1.1 765.5 878.14)">
+                        <text id="svg_16" fill-rule="nonzero" fill="#ffffff" stroke-miterlimit="4" stroke-linejoin="miter" stroke-dashoffset="0" stroke-linecap="butt" stroke-dasharray="none" stroke="none" font-weight="800" font-style="normal" font-size="127" font-family="Alegreya" xml:space="preserve">
+                            <tspan id="svg_17" fill="#ffffff" font-weight="400" font-style="normal" font-size="40px" font-family="'Lato'" y="-12.29" x="-56.54">Ulisse</tspan>
+                            <tspan id="svg_18" fill="#ffffff" font-weight="400" font-style="normal" font-size="40px" font-family="'Lato'" y="37.43" x="-86.8">Orlandini</tspan>
+                        </text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Create sunset warm particles
+        function createSunsetParticles() {
+            const container = document.querySelector('.container');
+            const particleCount = 18;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'sunset-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 2 + 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Create sunset warm floating elements
+        function createSunsetFloatingElements() {
+            const container = document.querySelector('.container');
+            const elementCount = 12;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                element.className = 'sunset-floating-element';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 8 + 's';
+                element.style.animationDuration = (Math.random() * 3 + 6) + 's';
+                container.appendChild(element);
+            }
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            createSunsetParticles();
+            createSunsetFloatingElements();
+        });
+
+        // Add interactive hover effects
+        document.querySelector('.logo-svg').addEventListener('mouseenter', function() {
+            this.style.filter = 'drop-shadow(0 0 30px rgba(255, 69, 0, 0.9))';
+        });
+
+        document.querySelector('.logo-svg').addEventListener('mouseleave', function() {
+            this.style.filter = 'drop-shadow(0 0 20px rgba(255, 69, 0, 0.7))';
+        });
+    </script>
+</body>
+</html>
